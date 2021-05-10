@@ -14,15 +14,15 @@ Esse documento serve como um guia de estudo. A descrição das etapas estão inc
 ---
 ## 1.0. O Problema
 
-Após cinco dias de estudos sobre as etapas de um projeto de Ciência de Dados, foi proposto um desafio para a análise de um conjunto de dados da área de Pesquisa de Medicamentos. O método de solução do problema ficou em aberto. Portanto, o nível de análise deveria ser escolhido pelo participante.
+Após cinco dias de estudos sobre as etapas de um projeto de Ciência de Dados, foi proposto um desafio para a análise de um conjunto de dados da área de Drug Discovery. O método de solução do problema ficou em aberto. Portanto, o nível de análise deveria ser escolhido pelo participante.
 
 Foram disponibilizados dois conjuntos de dados. O primeiro conjunto agrupa diversas informações sobre determinados experimentos em culturas de células específicas. O segundo conjunto agrupa os resultados desses experimentos. O conjunto de resultados é dividido em 206 mecanismos de ação distintos e a sua classificação para ativação(1: ativa o mecanismo de ação, 0: não ativa o mecanismo de ação).
 
-Pela alta granularidade desses mecanismos de ação, a análise desse projeto será feita de maneira agregada. O problema escolhido foi o de desenvolver um modelo de Machine Learning que seja capaz de prever se determinada cultura de célular terá alguma ativação em pelo menos dos mecanismos de ação.
+Pela alta granularidade desses mecanismos de ação, a análise desse projeto foi feita de maneira agregada. O problema escolhido foi o de desenvolver um modelo de Machine Learning que seja capaz de prever se determinada cultura de célular terá alguma ativação em pelo menos um dos mecanismos de ação.
 
 ---
 ## 2.0. A Solução
-A solução do problema será feita através de um Modelo de Machine Learning. Esse modelo será capaz de prever a classificação de uma cultura de célula em relação a ativação de **pelo menos um** mecanismo de ação. Além disso, o modelo final deverá ser capaz de prever a variável resposta de maneira mais precisa que um modelo aleatório.
+A solução do problema foi feita através de um Modelo de Machine Learning. Esse modelo deve capaz de prever a classificação de uma cultura de célula em relação a ativação de **pelo menos um** mecanismo de ação. Além disso, o modelo final tem de prever a variável resposta de maneira mais precisa que um modelo aleatório.
 
 - **Granularidade:** Por cultura de célula;
 
@@ -52,11 +52,11 @@ Durante a etapa de entendimento, levantei a possibilidade da dose D2 ser superio
 
 ### Correlações
 
-A análise das variáveis categóricas demostrou baixa correlação entre elas. A única variável que se correlacionou de maneira minimamente satisfatória que as ativações foi a Tratamento. É de se esperar que o Tratamento e as Ativações tenham maior correlação. Isso pode ser afirmado pois apenas tratamentos com droga levam a ativação.
+A análise das variáveis categóricas demostrou baixa correlação. A única variável que se correlacionou de maneira minimamente satisfatória com as ativações foi a Tratamento. É de se esperar que o Tratamento e as Ativações tenham maior correlação. Isso pode ser afirmado pois apenas tratamentos com droga levam a ativação.
 
 ![image](https://user-images.githubusercontent.com/73614098/117591142-08768200-b101-11eb-8baa-ac25a8ae2898.png)
 
-Outro aspecto interessante é a correlação entre os valores de Viabilidade Celular e Expressão Genética. É possível perceber que existe um padrão na correlação entre essas duas variáveis. A correlação da expressão genética com as viabilidades celulares é sempre a mesma para os valores de c-#. Se a correlação entre um g-# e um c-# é alta, todos os demais valores de c-# para esse g-# repetirão esse padrão alto.
+Outro aspecto interessante é a correlação entre os valores de Viabilidade Celular e Expressão Genética. É possível perceber que existe um padrão na correlação entre essas duas variáveis. A correlação da expressão genética com as viabilidades celulares é sempre a mesma para os valores de c-#. Por exemplo, Se a correlação entre um g-# e um c-# é alta, todos os demais valores de c-# para esse g-# repetirão esse padrão alto.
 O motivo disso pode ser explicado por algum especialista da área ou através de uma análise específica desse efeito.
 
 ![image](https://user-images.githubusercontent.com/73614098/117591221-7cb12580-b101-11eb-8550-8b95e946582e.png)
@@ -67,11 +67,11 @@ O motivo disso pode ser explicado por algum especialista da área ou através de
 
 Para a aplicação do modelo, algumas etapas foram cumpridas:
 
-- Divisão dos dados entre Treino e Teste - Os dados de treino serão usados para criar o modelo. Os dados de teste servem para entender o quão bem o modelo generaliza;
+- Divisão dos dados entre Treino e Teste - Os dados de treino são usados para criar o modelo. Os dados de teste servem para entender o quão bem o modelo generaliza;
 - Encoding das variáveis categóricas - Transformação das variáveis categóricas em variáveis numéricas.
-- Feature Selection - **A explicação mais simples é sempre preferível do que a mais complexa.** Esse é o princípio da navalha de Occam. Soluções complexas são mais propensas a erros. A simplificação do problema deve ser o objetivo sempre. Para os dados em questão foi utilizado um modelo de Random Forest para classificar a importância das features em relação ao projeto. Apenas as 25% features mais bem classificadas serão utilizadas.
+- Feature Selection - **A explicação mais simples é sempre preferível do que a mais complexa.** Esse é o princípio da navalha de Occam. Soluções complexas são mais propensas a erros. A simplificação do problema deve ser o objetivo sempre. Para os dados em questão foi utilizado um modelo de Random Forest para classificar a importância das features em relação ao projeto. Apenas as 25% features mais bem classificadas foram utilizadas.
 
-Cumprida essas etapas, a próxima etapa é modelar o problema. O modo de solução escolhido é um modelo de **Classificação**. Esse modelo deve prever dados nunca vistos de maneira satisfatória. Para isso, foram feitos testes de seis algorítmos de Classificação específicos:
+Cumprida essas etapas, a próxima etapa é modelar o problema. O modo de solução escolhido foi um modelo de **Classificação**. Esse modelo deve prever dados nunca vistos de maneira satisfatória. Para isso, foram feitos testes de seis algorítmos de Classificação específicos:
 
 - **1. Regressão Logística**
 - **2. KNN**
@@ -101,7 +101,7 @@ LGBMClassifier escolhido, os parâmetros de entrada do modelo foram tunados para
 ---
 ## 6.0. Resultados
 
-Os resultados do modelo pouco dizem sem uma base de comparação. Para isso, foram criados duas baselines: A primeira com valores aleatórios entre 0 e 1, a segunda que determina que todos os valores são 1. Os resultados foram os seguintes:
+Os resultados do modelo pouco informam sem uma base de comparação. Para isso, foram criados duas baselines: A primeira com valores aleatórios entre 0 e 1, a segunda que determina que todos os valores são 1. Os resultados foram os seguintes:
 
 ![image](https://user-images.githubusercontent.com/73614098/117594170-80e24080-b10b-11eb-8ae7-91f8d655f142.png)
 
@@ -111,9 +111,9 @@ Algumas conclusões podem ser tiradas desses dados:
 
 - O modelo foi mais preciso que ambas as baselines. 66.39% dos dados que o modelo previu como ativados, realmente foram ativados;
 
-- O modelo teve o Recall praticamente identico ao modelo que "chutou" todos os valores como ativados. O recall é a taxa que demonstra a porcentagem de dados que realmente são positivos e o modelo previu. Como a baseline chutou todos os valores como ativos, ele acertou em todas as vezes. Apesar disso, o modelo usado chegou bem próximo desse valor, com um Recall de 99.49%;
+- O modelo teve o Recall praticamente identico ao modelo que "chutou" todos os valores como ativados. O recall é a taxa que demonstra a porcentagem de dados que realmente são positivos e o modelo previu. Como a baseline chutou todos os valores como ativados, ele acertou em todas as vezes. Apesar disso, o modelo usado chegou bem próximo desse valor, com um Recall de 99.49%;
 
-- A Specificity do nosso modelo foi superior a baseline_todos1. Com uma de taxa de 22.30%, apesar do modelo acertar em aproximadamente 100% daqueles que são positivos, ele ainda tem uma certa taxa de acerto dos valores negativos. No entanto a taxa ainda é muito baixa. Os próximos ciclos devem ser focados em aumentá-la.
+- A Specificity do nosso modelo foi superior a baseline_todos1. Com uma de taxa de 22.30%, apesar do modelo acertar em aproximadamente 100% daqueles que são positivos, ele ainda tem uma taxa de acerto dos valores negativos. No entanto a taxa ainda é muito baixa. Os próximos ciclos devem ser focados em aumentá-la.
 
 ---
 ## 7.0. Conclusões
@@ -127,7 +127,7 @@ O modelo de LGBMClassifier permitiu um aumento no poder de previsão em relaçã
 
 - Durante as pesquisas, consegui me aprofundar em conceitos biológicos e de Drug Discovery que não conhecia. Irei me aprofundar nesse tema para trabalhar de maneira mais avançada nesse mesmo conjunto de dados;
 
-- Consegui aperceiçoar as ferramentas técnicas de manipulação e visualização de dados. Também aprendi ferramentas novas, como o Crosstab e os métodos de balanceamento de dados(apesar de não ter utilizado no projeto).
+- Consegui aperfeiçoar as ferramentas técnicas de manipulação e visualização de dados. Também aprendi ferramentas novas, como o Crosstab e os métodos de balanceamento de dados(apesar de não ter utilizado no projeto).
 
 ---
 ## 9.0. Próximos Passos
@@ -135,17 +135,27 @@ O modelo de LGBMClassifier permitiu um aumento no poder de previsão em relaçã
 Os resultados foram melhores do que previsões aleatórias e "chutes". No entanto, as métricas ainda estão abaixo do que podem ser. Os próximos passos para esse projeto são:
 
 - Trabalhar com novos ciclos do CRISP;
+- 
 - Me aprofundar nos conceitos Biológicos;
+- 
 - Fazer uma Análise Exploratória de Dados mais avançada para a criação de Insights;
+- 
 - Testar novos modelos de Machine Learning.
 
 ---
 ## 10.0. Bibliografia
-Crisp:
-https://pt.wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining
 
-Métricas de avaliação
-https://medium.com/pyladiesbh/m%C3%A9tricas-de-avalia%C3%A7%C3%A3o-de-classificadores-6aadc3dacd51
+[CRISP DM](https://pt.wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining).
+
+[Métricas de Avaliação](https://medium.com/pyladiesbh/m%C3%A9tricas-de-avalia%C3%A7%C3%A3o-de-classificadores-6aadc3dacd51).
+
+[Documentação LGBMClassifier](https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html).
+
+[Drug discovery: passado, presente e futuro](https://docs.google.com/document/d/10EhrQBChlyYIcff3to7PrCQi5HcNk2r-zd2ZCKPtcz8/edit?usp=sharing).
+
+[Expressão gênica: o caminho da informação biológica](https://drive.google.com/file/d/1VNP08ffCiGD8cqaBkdHATWSX8Yxfm3dj/view?usp=sharing).
+
+
 
 <br/><br/>
 <br/><br/>

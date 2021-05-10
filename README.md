@@ -1,8 +1,6 @@
 # Desafio Final Imersão de Dados Alura - Drug Discovery
 
-![IMG](https://www.selectscience.net/images/articles/37681447_ML_Narrow.jpg)
-
-
+![image](https://user-images.githubusercontent.com/73614098/117595859-e9cbb780-b10f-11eb-8060-c168cd060338.png)
 
 ---
 ## Introdução

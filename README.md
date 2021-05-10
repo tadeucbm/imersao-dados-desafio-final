@@ -139,7 +139,7 @@ Os resultados foram melhores do que previsões aleatórias e "chutes". No entant
 - Me aprofundar nos conceitos Biológicos;
 
 - Fazer uma Análise Exploratória de Dados mais avançada para a criação de Insights;
-- 
+
 - Testar novos modelos de Machine Learning.
 
 ---

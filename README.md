@@ -135,9 +135,9 @@ O modelo de LGBMClassifier permitiu um aumento no poder de previsão em relaçã
 Os resultados foram melhores do que previsões aleatórias e "chutes". No entanto, as métricas ainda estão abaixo do que podem ser. Os próximos passos para esse projeto são:
 
 - Trabalhar com novos ciclos do CRISP;
-- 
+
 - Me aprofundar nos conceitos Biológicos;
-- 
+
 - Fazer uma Análise Exploratória de Dados mais avançada para a criação de Insights;
 - 
 - Testar novos modelos de Machine Learning.

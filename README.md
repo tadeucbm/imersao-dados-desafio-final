@@ -82,27 +82,69 @@ Cumprida essas etapas, a próxima etapa é modelar o problema. O modo de soluç�
 - **5. RandomForestClassifier**
 - **6. CatBoostClassifier**
 
-Os desempenhos foram os seguintes:
+Foi utilizado o método de **Validação Cruzada** para o cálculo das métricas. A Validação Cruzada separa os dados em folds. Cada fold desempenha o papel de conjunto de teste em cada ciclo, e os demais folds são usados para a modelagem. Esse procedimento permite reduzir o viés e aumentar a capacidade de generalização do modelo. Os desempenhos foram os seguintes:
 
 ![image](https://user-images.githubusercontent.com/73614098/117592113-5c836580-b105-11eb-9c75-9350fd808fcd.png)
 
+Os principais modelos tiveram desempenho semelhante. Apesar de ter um desempenho superior em relação aos demais, o CatBoostClassifier demanda muito processamento e tempo. Para fins desse projeto, o modelo escolhido foi o LGBMClassifier.
 
 ---
-### 5.0. Performance do Modelo de Machine Learning
+## 5.0. Performance do Modelo de Machine Learning
+
+LGBMClassifier escolhido, os parâmetros de entrada do modelo foram tunados para buscar um maior desempenho. Com o modelo final pronto, é hora de testar o seu poder de generalização com os dados de teste, seguindo o método de Validação Cruzada:
+
+![image](https://user-images.githubusercontent.com/73614098/117593005-ade12400-b108-11eb-9309-534786f38970.png)
+
+- Acurácia: A taxa de acerto, independente da classe em questão;
+- Precisão: Daqueles o modelo previu como positivo, quantos são realmente positivos?;
+- Recall: Daqueles que são positivos, quanto o modelo previu?;
+- Specificity: Quão bom o modelo é bom em prever a classe negativa?
 
 ---
 ## 6.0. Resultados
 
+Os resultados do modelo pouco dizem sem uma base de comparação. Para isso, foram criados duas baselines: A primeira com valores aleatórios entre 0 e 1, a segunda que determina que todos os valores são 1. Os resultados foram os seguintes:
+
+![image](https://user-images.githubusercontent.com/73614098/117594170-80e24080-b10b-11eb-8ae7-91f8d655f142.png)
+
+Algumas conclusões podem ser tiradas desses dados:
+
+- O modelo foi mais acurado que ambas as baselines. A taxa de acerto do modelo foi de 69.13%;
+
+- O modelo foi mais preciso que ambas as baselines. 66.39% dos dados que o modelo previu como ativados, realmente foram ativados;
+
+- O modelo teve o Recall praticamente identico ao modelo que "chutou" todos os valores como ativados. O recall é a taxa que demonstra a porcentagem de dados que realmente são positivos e o modelo previu. Como a baseline chutou todos os valores como ativos, ele acertou em todas as vezes. Apesar disso, o modelo usado chegou bem próximo desse valor, com um Recall de 99.49%;
+
+- A Specificity do nosso modelo foi superior a baseline_todos1. Com uma de taxa de 22.30%, apesar do modelo acertar em aproximadamente 100% daqueles que são positivos, ele ainda tem uma certa taxa de acerto dos valores negativos. No entanto a taxa ainda é muito baixa. Os próximos ciclos devem ser focados em aumentá-la.
+
 ---
 ## 7.0. Conclusões
+
+O modelo de LGBMClassifier permitiu um aumento no poder de previsão em relação a ativação das culturas celulares. O modelo se mostrou superior às baselines aleatória e a todos_1. Isso pode ser interpretado como um avanço. No entanto, novas etapas devem ser enfrentadas para melhorar ainda mais esse resultado.
 
 --- 
 ## 8.0. Lições Aprendidas
 
+- Esse projeto foi desafiador para mim. Comecei a produzi-lo no dia anterior a sua publicação e estou bastante feliz com o resultado obtido. O curto prazo para entrega e a grande quantidade de dados me ensinou que é possível entregar uma solução, ainda que básica, de um problema;
+
+- Durante as pesquisas, consegui me aprofundar em conceitos biológicos e de Drug Discovery que não conhecia. Irei me aprofundar nesse tema para trabalhar de maneira mais avançada nesse mesmo conjunto de dados;
+
+- Consegui aperceiçoar as ferramentas técnicas de manipulação e visualização de dados. Também aprendi ferramentas novas, como o Crosstab e os métodos de balanceamento de dados(apesar de não ter utilizado no projeto).
+
 ---
 ## 9.0. Próximos Passos
+
+Os resultados foram melhores do que previsões aleatórias e "chutes". No entanto, as métricas ainda estão abaixo do que podem ser. Os próximos passos para esse projeto são:
+
+- Trabalhar com novos ciclos do CRISP;
+- Me aprofundar nos conceitos Biológicos;
+- Fazer uma Análise Exploratória de Dados mais avançada para a criação de Insights;
+- Testar novos modelos de Machine Learning.
 
 ---
 ## 10.0. Bibliografia
 Crisp:
 https://pt.wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining
+
+Métricas de avaliação
+https://medium.com/pyladiesbh/m%C3%A9tricas-de-avalia%C3%A7%C3%A3o-de-classificadores-6aadc3dacd51

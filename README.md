@@ -155,6 +155,8 @@ Os resultados foram melhores do que previsões aleatórias e "chutes". No entant
 
 [Expressão gênica: o caminho da informação biológica](https://drive.google.com/file/d/1VNP08ffCiGD8cqaBkdHATWSX8Yxfm3dj/view?usp=sharing).
 
+[Dados Utilizados](https://www.kaggle.com/c/lish-moa).
+
 
 
 <br/><br/>
